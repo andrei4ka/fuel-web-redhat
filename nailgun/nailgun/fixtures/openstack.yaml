@@ -12,6 +12,7 @@
       - controller
       - compute
       - cinder
+      - ceph-mon
       - ceph-osd
       - mongo
       - zabbix-server
@@ -37,6 +38,14 @@
         restrictions:
           - condition: "settings:storage.volumes_lvm.value == false and settings:storage.volumes_vmdk.value == false"
             message: "Cinder LVM or VMDK should be enabled in settings"
+      ceph-mon:
+        name: "Storage - Ceph MON"
+        description: "Ceph storage can be configured to provide storage for block volumes (Cinder), images (Glance) and ephemeral instance storage (Nova). It can also provide object storage through the S3 and Swift API (See settings to enable each)."
+        restrictions:
+          - condition: "settings:common.libvirt_type.value == 'vcenter'"
+            message: "Ceph cannot be used with vCenter"
+        update_once:
+          - controller
       ceph-osd:
         name: "Storage - Ceph OSD"
         description: "Ceph storage can be configured to provide storage for block volumes (Cinder), images (Glance) and ephemeral instance storage (Nova). It can also provide object storage through the S3 and Swift API (See settings to enable each)."
@@ -200,6 +209,8 @@
         cinder:
           - {allocate_size: "min", id: "os"}
           - {allocate_size: "all", id: "cinder"}
+        ceph-mon:
+          - {allocate_size: "min", id: "os"}
         ceph-osd:
           - {allocate_size: "min", id: "os"}
           - {allocate_size: "min", id: "cephjournal"}

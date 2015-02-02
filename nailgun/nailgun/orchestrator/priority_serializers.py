@@ -201,6 +201,7 @@ class PriorityHASerializerPatching(PrioritySerializer):
     def set_deployment_priorities(self, nodes):
 
         self.priority.one_by_one(self.by_role(nodes, 'zabbix-server'))
+        self.priority.one_by_one(self.by_role(nodes, 'ceph-mon'))
         self.priority.one_by_one(self.by_role(nodes, 'primary-swift-proxy'))
         self.priority.one_by_one(self.by_role(nodes, 'swift-proxy'))
         self.priority.one_by_one(self.by_role(nodes, 'storage'))
