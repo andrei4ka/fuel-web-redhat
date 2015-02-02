@@ -865,6 +865,7 @@ class DeploymentMultinodeSerializer(object):
 
         self.set_storage_parameters(cluster, attrs)
         self.set_primary_mongo(attrs['nodes'])
+        self.set_primary_ceph_mon(attrs['nodes'])
 
         attrs = dict_merge(
             attrs,
@@ -958,6 +959,7 @@ class DeploymentMultinodeSerializer(object):
             for role in objects.Node.all_roles(node):
                 serialized_nodes.append(self.serialize_node(node, role))
         self.set_primary_mongo(serialized_nodes)
+        self.set_primary_ceph_mon(serialized_nodes)
         return serialized_nodes
 
     def serialize_node(self, node, role):
@@ -1063,6 +1065,13 @@ class DeploymentMultinodeSerializer(object):
         node if it not set yet
         """
         self.set_primary_node(nodes, 'mongo', 0)
+    def set_primary_ceph_mon(self, nodes):
+        """Set primary mongo for the last mongo node
+        node if it not set yet
+        """
+        self.set_primary_node(nodes, 'ceph-mon', 0)
+
+
 
     def filter_by_roles(self, nodes, roles):
         return filter(
