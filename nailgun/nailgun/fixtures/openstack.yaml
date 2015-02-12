@@ -154,11 +154,13 @@
             configurable: true
             assign_vip: true
           - name: "storage"
-            cidr: "192.168.1.0/24"
+            cidr: "192.168.1.0/24
+            ip_range: ["192.168.1.5", "192.168.1.125"]
             vlan_start: 102
             use_gateway: false
-            notation: "cidr"
-            render_type: "cidr"
+            notation: "ip_ranges"
+            calculate_cidr: true
+            render_type: null
             render_addr_mask: "storage"
             map_priority: 2
             configurable: true
