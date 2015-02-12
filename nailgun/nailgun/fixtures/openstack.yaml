@@ -154,7 +154,7 @@
             configurable: true
             assign_vip: true
           - name: "storage"
-            cidr: "192.168.1.0/24
+            cidr: "192.168.1.0/24"
             ip_range: ["192.168.1.5", "192.168.1.125"]
             vlan_start: 102
             use_gateway: false
