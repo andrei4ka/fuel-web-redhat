@@ -63,7 +63,7 @@ class TestHandlers(base.BaseTestCase):
     def test_node_action(self):
         help_msg = ["fuel node [-h] [--env ENV]",
                     "[--list | --set | --delete | --network | --disk |"
-                    " --deploy | --delete-from-db | --provision]", "-h",
+                    " --deploy | --setname SETNAME | --delete-from-db | --provision]", "-h",
                     "--help", " -s", "--default", " -d", "--download", " -u",
                     "--upload", "--dir", "--node", "--node-id", " -r",
                     "--role", "--net"]
@@ -114,6 +114,17 @@ class TestHandlers(base.BaseTestCase):
             "node --node 1 --delete-from-db",
             msg
         )
+    def test_rename_node(self):
+        self.load_data_to_nailgun_server()
+        self.run_cli_commands((
+            "env create --name=NewEnv --release=1",
+            "--env-id=1 node set --node 2 --role=controller"
+        ))
+        msg = ("Node with id [2] has been renamed to test-name.\n")
+        self.check_for_stdout(
+                "node --node 2 --setname test-name",
+                msg
+            )
 
     def test_for_examples_in_action_help(self):
         actions = (

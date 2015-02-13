@@ -46,6 +46,7 @@ class NodeAction(Action):
                 Args.get_network_arg("Node network configuration."),
                 Args.get_disk_arg("Node disk configuration."),
                 Args.get_deploy_arg("Deploy specific nodes."),
+                Args.get_setname_arg("Set node name."),
                 Args.get_delete_from_db_arg(
                     "Delete specific nodes only from fuel db.\n"
                     "User should still delete node from cobbler"),
@@ -75,6 +76,7 @@ class NodeAction(Action):
             ("deploy", self.start),
             ("provision", self.start),
             ("delete-from-db", self.delete_from_db),
+            ("setname", self.set_name),
             (None, self.list)
         )
 
@@ -264,3 +266,43 @@ class NodeAction(Action):
             {},
             "Nodes with id {0} has been deleted from fuel db.\n"
             "You should still delete node from cobbler".format(params.node))
+
+    @check_all("node", "setname")
+    def set_name(self, params):
+        """To set node name:
+                fuel node --node-id 1 --setname ctrl-01
+        """
+        nodes = Node.get_by_ids(params.node)
+
+        if len(nodes) > 1:
+            raise ArgumentException(
+                "You should select only one node to change hostname."
+            )
+        elif not self.is_valid_hostname(params.setname):
+            raise ArgumentException(
+                "Invalid hostname format"
+            )
+        elif self.name_is_duplicated(params.setname, nodes[0].env_id):
+            raise ArgumentException(
+                "Hostname already exists in cluster"
+            )
+        else:
+            nodes[0].set_name(params.setname)
+            self.serializer.print_to_output(
+                {},
+                "Node with id {0} has been renamed to {1}."
+                .format(params.node, params.setname)
+            )
+
+    def is_valid_hostname(self, hostname):
+        import re
+        regex = ('^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*'
+                 '[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$')
+        name = re.search(regex, hostname)
+        return name is not None
+
+    def name_is_duplicated(self, name, node_cluster):
+        node_collection = NodeCollection.get_all()
+        for node in node_collection.data:
+            if node['name'] == name and node['cluster'] == node_cluster:
+                return True

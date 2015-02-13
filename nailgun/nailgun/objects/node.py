@@ -19,6 +19,7 @@ Node-related objects and collections
 """
 import operator
 import traceback
+import re
 
 from datetime import datetime
 
@@ -709,7 +710,11 @@ class Node(NailgunObject):
 
     @classmethod
     def make_slave_name(cls, instance):
-        return u"node-{node_id}".format(node_id=instance.id)
+#        return u"node-{node_id}".format(node_id=instance.id)
+        valid_host = re.compile("(?!-)[A-Z\d-]{1,63}(?<!-)$", re.IGNORECASE)
+        return u"{node_name}".format(node_name=instance.name) \
+            if valid_host.match(instance.name) \
+            else u"node-{node_id}".format(node_id=instance.id)
 
     @classmethod
     def make_slave_fqdn(cls, instance):
