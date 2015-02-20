@@ -361,7 +361,7 @@
             description: "Password for Administrator"
             weight: 20
             type: "password"
-        cloudusers:
+        users:
           metadata:
             label: "Cloud users"
             weight: 10
