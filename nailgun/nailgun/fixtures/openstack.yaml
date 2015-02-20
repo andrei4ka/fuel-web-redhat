@@ -367,85 +367,85 @@
             weight: 10
           nova:
             value: "nova"
-            label: "username"
+            label: "nova username"
             description: "Username for Nova service user"
             weight: 10
             type: "text"
           nova_password:
             value: "nova_password"
-            label: "password"
+            label: "nova password"
             description: "Password for Nova service user"
             weight: 20
             type: "password"
           neutron:
             value: "neutron"
-            label: "username"
+            label: "neutron username"
             description: "Username for Neutron service user"
             weight: 10
             type: "text"
           neutron_password:
             value: "neutron_password"
-            label: "password"
+            label: "neutron password"
             description: "Password for Neutron service user"
             weight: 20
             type: "password"
           glance:
             value: "glance"
-            label: "username"
+            label: "glance username"
             description: "Username for Glance service user"
             weight: 10
             type: "text"
           glance_password:
             value: "glance_password"
-            label: "password"
+            label: "glance password"
             description: "Password for Glance service user"
             weight: 20
             type: "password"
           cinder:
             value: "cinder"
-            label: "username"
+            label: "cinder username"
             description: "Username for Cinder service user"
             weight: 10
             type: "text"
           cinder_password:
             value: "cinder_password"
-            label: "password"
+            label: "cinder password"
             description: "Password for Cinder service user"
             weight: 20
             type: "password"
           ceilometer:
             value: "ceilometer"
-            label: "username"
+            label: "ceilometer username"
             description: "Username for Ceilometer service user"
             weight: 10
             type: "text"
           ceilometer_password:
             value: "ceilometer_password"
-            label: "password"
+            label: "ceilometer password"
             description: "Password for Ceilometer service user"
             weight: 20
             type: "password"
           heat:
             value: "heat"
-            label: "username"
+            label: "heat username"
             description: "Username for Heat/Heat-cfn service user"
             weight: 10
             type: "text"
           heat_password:
             value: "heat_password"
-            label: "password"
+            label: "heat password"
             description: "Password for Heat/Heat-cfn service user"
             weight: 20
             type: "password"
           murano:
             value: "murano"
-            label: "username"
+            label: "murano username"
             description: "Username for Murano service user"
             weight: 10
             type: "text"
           nova_password:
             value: "murano_password"
-            label: "password"
+            label: "murano password"
             description: "Password for Murano service user"
             weight: 20
             type: "password"
