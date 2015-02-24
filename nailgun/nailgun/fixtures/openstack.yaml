@@ -443,7 +443,7 @@
             description: "Username for Murano service user"
             weight: 10
             type: "text"
-          nova_password:
+          murano_password:
             value: "murano_password"
             label: "murano password"
             description: "Password for Murano service user"
