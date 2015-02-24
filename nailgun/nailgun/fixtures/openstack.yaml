@@ -332,7 +332,7 @@
             label: "Access"
             weight: 10
           user:
-            value: "admin"
+            value: "svcadmindev"
             label: "username"
             description: "Username for Administrator"
             weight: 10
@@ -366,7 +366,7 @@
             label: "Cloud users"
             weight: 10
           nova:
-            value: "nova"
+            value: "svcnovadev"
             label: "nova username"
             description: "Username for Nova service user"
             weight: 10
@@ -378,7 +378,7 @@
             weight: 20
             type: "password"
           neutron:
-            value: "neutron"
+            value: "svcneutrondev"
             label: "neutron username"
             description: "Username for Neutron service user"
             weight: 10
@@ -390,7 +390,7 @@
             weight: 20
             type: "password"
           glance:
-            value: "glance"
+            value: "svcglancedev"
             label: "glance username"
             description: "Username for Glance service user"
             weight: 10
@@ -402,7 +402,7 @@
             weight: 20
             type: "password"
           cinder:
-            value: "cinder"
+            value: "svccinderdev"
             label: "cinder username"
             description: "Username for Cinder service user"
             weight: 10
@@ -414,7 +414,7 @@
             weight: 20
             type: "password"
           ceilometer:
-            value: "ceilometer"
+            value: "svcceilometerdev"
             label: "ceilometer username"
             description: "Username for Ceilometer service user"
             weight: 10
@@ -426,19 +426,31 @@
             weight: 20
             type: "password"
           heat:
-            value: "heat"
+            value: "svcheatdev"
             label: "heat username"
-            description: "Username for Heat/Heat-cfn service user"
+            description: "Username for Heat service user"
             weight: 10
             type: "text"
           heat_password:
             value: "heat_password"
             label: "heat password"
-            description: "Password for Heat/Heat-cfn service user"
+            description: "Password for Heat service user"
+            weight: 20
+            type: "password"
+          heat_cfn:
+            value: "svcheat_cfndev"
+            label: "heat-cfn username"
+            description: "Username for Heat-cfn service user"
+            weight: 10
+            type: "text"
+          heat_cfn_password:
+            value: "heat_cfn_password"
+            label: "heat password"
+            description: "Password for Heat-cfn service user"
             weight: 20
             type: "password"
           murano:
-            value: "murano"
+            value: "svcmuranodev"
             label: "murano username"
             description: "Username for Murano service user"
             weight: 10
@@ -447,6 +459,18 @@
             value: "murano_password"
             label: "murano password"
             description: "Password for Murano service user"
+            weight: 20
+            type: "password"
+          designate:
+            value: "svcdesignatedev"
+            label: "designate username"
+            description: "Username for Designate service user"
+            weight: 10
+            type: "text"
+          designate_password:
+            value: "designate_password"
+            label: "designate password"
+            description: "Password for Designate service user"
             weight: 20
             type: "password"
         vcenter:
