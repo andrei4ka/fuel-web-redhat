@@ -444,8 +444,8 @@
             weight: 10
             type: "text"
           heat_cfn_password:
-            value: "heat_cfn_password"
-            label: "heat password"
+            value: "heat_password"
+            label: "heat-cfn password"
             description: "Password for Heat-cfn service user"
             weight: 20
             type: "password"
@@ -459,18 +459,6 @@
             value: "murano_password"
             label: "murano password"
             description: "Password for Murano service user"
-            weight: 20
-            type: "password"
-          designate:
-            value: "svcdesignatedev"
-            label: "designate username"
-            description: "Username for Designate service user"
-            weight: 10
-            type: "text"
-          designate_password:
-            value: "designate_password"
-            label: "designate password"
-            description: "Password for Designate service user"
             weight: 20
             type: "password"
         vcenter:
