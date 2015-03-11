@@ -361,6 +361,40 @@
             description: "Password for Administrator"
             weight: 20
             type: "password"
+        keystone_ldap:
+          metadata:
+            label: "Ldap connection information"
+            weight: 10
+          ldap_url:
+            value: "ldap://172.16.49.136"
+            label: "LDAP url"
+            description: "ldap://ip"
+            weight: 10
+            type: "text"
+          ldap_suffix:
+            value: "dc=caponelab,dc=local"
+            label: "LDAP suffix"
+            description: "For example: dc=caponelab,dc=local"
+            weight: 10
+            type: "text"
+          ldap_user_tree_dn:
+            value: "ou=Engineering,dc=caponelab,dc=local"
+            label: "LDAP user tree DN"
+            description: "For example: ou=Engineering,dc=caponelab,dc=local"
+            weight: 10
+            type: "text"
+          ldap_user:
+            value: "cn=svcadmindev,ou=Engineering,dc=caponelab,dc=local"
+            label: "LDAP cn of admin user"
+            description: "For example: cn=svcadmindev,ou=Engineering,dc=caponelab,dc=local"
+            weight: 10
+            type: "text"
+          ldap_pass:
+            value: "admin"
+            label: "LDAP admin user password"
+            description: "ldap://ip"
+            weight: 10
+            type: "password"
         users:
           metadata:
             label: "Cloud users"
