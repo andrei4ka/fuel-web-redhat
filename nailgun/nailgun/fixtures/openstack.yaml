@@ -1472,4 +1472,4 @@
       puppet_manifests_source: "rsync://{MASTER_IP}:/puppet/{OPENSTACK_VERSION}/manifests/"
       puppet_modules_source: "rsync://{MASTER_IP}:/puppet/{OPENSTACK_VERSION}/modules/"
       repo_metadata:
-        "{OPENSTACK_VERSION}": "http://{MASTER_IP}:8080/{OPENSTACK_VERSION}/centos/x86_64"
+        "{OPENSTACK_VERSION}": "http://{MASTER_IP}:8080/{OPENSTACK_VERSION}/redhat/x86_64"
