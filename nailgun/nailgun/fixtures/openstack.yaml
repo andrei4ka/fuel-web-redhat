@@ -392,7 +392,7 @@
           ldap_pass:
             value: "admin"
             label: "LDAP admin user password"
-            description: "ldap://ip"
+            description: "Admin user password"
             weight: 10
             type: "password"
         users:
