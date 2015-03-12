@@ -154,6 +154,9 @@ class Node(NailgunObject):
         :returns: True when node has Public network
         """
         if Cluster.should_assign_public_to_all_nodes(instance.cluster):
+            ceph = set(['ceph-osd', 'ceph-mon', 'ceph-primary-mon'])
+            if ceph & (set(instance.roles) or set(instance.pending_roles)):
+                return False
             return True
         ctrl = set(['primary-controller', 'controller', 'zabbix-server'])
         if ctrl & (set(instance.roles) or set(instance.pending_roles)):

@@ -547,8 +547,8 @@ class NeutronNetworkDeploymentSerializer(NetworkDeploymentSerializer):
         if objects.Node.should_have_public(node):
             attrs['endpoints']['br-ex']['gateway'] = \
                 netgroups['public']['gateway']
-        else:
-            attrs['endpoints']['br-fw-admin']['gateway'] = settings.MASTER_IP
+#        else:
+#            attrs['endpoints']['br-fw-admin']['gateway'] = settings.MASTER_IP
 
         # Connect interface bridges to network bridges.
         for ngname, brname in netgroup_mapping:
@@ -782,14 +782,19 @@ class NeutronNetworkDeploymentSerializer60(
 
         for ngname, brname in netgroup_mapping:
             netgroup = nm.get_node_network_by_netname(node, ngname)
-            if netgroup.get('gateway'):
-                attrs['endpoints'][brname]['gateway'] = netgroup['gateway']
+#            if netgroup.get('gateway'):
+#                attrs['endpoints'][brname]['gateway'] = netgroup['gateway']
+        netgroup_ex = nm.get_node_network_by_netname(node, 'public')
+        netgroup_storage = nm.get_node_network_by_netname(node, 'storage')
             attrs['endpoints'][brname]['other_nets'] = \
                 other_nets.get(ngname, [])
 
         if not objects.Node.should_have_public(node):
-            gw = nm.get_default_gateway(node.id)
-            attrs['endpoints']['br-fw-admin']['gateway'] = gw
+#            gw = nm.get_default_gateway(node.id)
+#            attrs['endpoints']['br-fw-admin']['gateway'] = gw
+            attrs['endpoints']['br-storage']['gateway'] = netgroup_storage['gateway']
+        else:
+             attrs['endpoints']['br-ex']['gateway'] = netgroup_ex['gateway']
 
         for brname in attrs['endpoints'].keys():
             if attrs['endpoints'][brname].get('gateway'):
