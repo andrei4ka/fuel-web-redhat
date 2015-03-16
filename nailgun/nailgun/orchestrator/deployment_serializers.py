@@ -784,10 +784,11 @@ class NeutronNetworkDeploymentSerializer60(
             netgroup = nm.get_node_network_by_netname(node, ngname)
 #            if netgroup.get('gateway'):
 #                attrs['endpoints'][brname]['gateway'] = netgroup['gateway']
-        netgroup_ex = nm.get_node_network_by_netname(node, 'public')
-        netgroup_storage = nm.get_node_network_by_netname(node, 'storage')
             attrs['endpoints'][brname]['other_nets'] = \
                 other_nets.get(ngname, [])
+
+        netgroup_ex = nm.get_node_network_by_netname(node, 'public')
+        netgroup_storage = nm.get_node_network_by_netname(node, 'storage')
 
         if not objects.Node.should_have_public(node):
 #            gw = nm.get_default_gateway(node.id)
