@@ -872,6 +872,7 @@ class DeploymentMultinodeSerializer(object):
 
         self.set_storage_parameters(cluster, attrs)
         self.set_primary_mongo(attrs['nodes'])
+        self.set_primary_controller(attrs['nodes'])
         self.set_primary_ceph_mon(attrs['nodes'])
 
         attrs = dict_merge(
@@ -1089,6 +1090,11 @@ class DeploymentMultinodeSerializer(object):
         node if it not set yet
         """
         self.set_primary_node(nodes, 'ceph-mon', 0)
+    def set_primary_controller(self, nodes):
+        """Set primary mongo for the last mongo node
+        node if it not set yet
+        """
+        self.set_primary_node(nodes, 'controller', 0)
 
 
 
