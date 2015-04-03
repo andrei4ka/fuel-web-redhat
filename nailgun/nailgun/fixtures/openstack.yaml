@@ -383,6 +383,12 @@
             description: "For example: ou=Engineering,dc=caponelab,dc=local"
             weight: 10
             type: "text"
+          ldap_user_filter:
+            value: "cn=local"
+            label: "LDAP user filter"
+            description: "For example: cn=local"
+            weight: 10
+            type: "text"  
           ldap_user:
             value: "cn=svcadmindev,ou=Engineering,dc=caponelab,dc=local"
             label: "LDAP cn of admin user"
