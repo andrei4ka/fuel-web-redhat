@@ -1,6 +1,6 @@
 argparse
 cliff-tablib
-scapy==2.2.0-dev
+scapy==2.4.1
 pypcap==1.1.1
 stevedore
 daemonize
